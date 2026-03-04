@@ -1,0 +1,95 @@
+import { useState, useCallback } from "react"
+import { Header } from "./components/Header"
+import { SearchForm } from "./components/SearchForm"
+import { StudentInfo } from "./components/StudentInfo"
+import { EmptyState } from "./components/EmptyState"
+import { NotFoundState } from "./components/NotFoundState"
+import type { Student } from "./lib/types"
+import ActivitiesList from "./components/ActivitiesList"
+
+type SearchState = "idle" | "loading" | "found" | "not-found"
+
+function App() {
+  const [dni, setDni] = useState("")
+  const [searchState, setSearchState] = useState<SearchState>("idle")
+  const [student, setStudent] = useState<Student | null>(null)
+  const [searchedDni, setSearchedDni] = useState("")
+
+  const handleSearch = useCallback(async () => {
+  const dniLimpio = dni.trim();
+  if (dniLimpio.length < 7) return;
+
+  setSearchState("loading");
+  setSearchedDni(dniLimpio);
+
+  // Asegúrate de usar la URL de la NUEVA versión generada en el Paso 1
+  const scriptUrl = `https://script.google.com/macros/s/AKfycbzgD7GCrBBXOIqFSKhdyo076oxAUzXNky-PK7uH7Etj2Usiz19qbiJkGLFC4kIFd4CEuw/exec`;
+
+  try {
+    const response = await fetch(`${scriptUrl}?dni=${dniLimpio}`, {
+      method: "GET",
+      // No agregues 'headers' ni 'mode: no-cors'
+    });
+
+    if (!response.ok) throw new Error("Error en la respuesta de Google");
+
+    const data = await response.json();
+    console.log("RESPUESTA COMPLETA DE GOOGLE:", data); // <--- MIRA ESTO EN LA CONSOLA
+    if (data && data.nombre) {
+      setStudent(data);
+      setSearchState("found");
+    } else {
+      setStudent(null);
+      setSearchState("not-found");
+    }
+  } catch (error) {
+    console.error("Error en la búsqueda:", error);
+    setSearchState("not-found");
+  }
+}, [dni]);
+
+  return (
+    <div className="min-h-screen bg-background font-sans antialiased">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-8">
+        <SearchForm 
+          dni={dni} 
+          onDniChange={setDni} 
+          onSearch={handleSearch} 
+          isLoading={searchState === "loading"} 
+        />
+
+        <div className="mt-8">
+          {/* 1. Estado Inicial */}
+          {searchState === "idle" && <EmptyState />}
+
+          {/* 2. Cargando */}
+          {searchState === "loading" && (
+            <div className="flex justify-center py-20">
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
+            </div>
+          )}
+
+          {/* 3. No encontrado */}
+          {searchState === "not-found" && <NotFoundState dni={searchedDni} />}
+
+          {/* 4. Éxito: Solo se muestra si student existe y tiene datos */}
+          {searchState === "found" && student && (
+            <div className="mx-auto max-w-4xl px-4 flex flex-col gap-6 animate-in fade-in duration-500">
+  {/* Ambos componentes ahora comparten el mismo ancho máximo centrado */}
+  <StudentInfo student={student} />
+  <ActivitiesList activities={student.actividades} />
+</div>
+          )}
+        </div>
+      </main>
+
+      <footer className="py-6 text-center text-sm text-muted-foreground border-t">
+        UNAHUR — Suplemento al Título
+      </footer>
+    </div>
+  )
+}
+
+export default App;
