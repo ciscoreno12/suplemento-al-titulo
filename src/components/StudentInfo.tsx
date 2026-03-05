@@ -22,10 +22,6 @@ export function StudentInfo({ student }: StudentInfoProps) {
               <Hash className="h-3.5 w-3.5" />
               DNI: {student.dni}
             </span>
-            <span className="flex items-center gap-1.5">
-              <BookOpen className="h-3.5 w-3.5" />
-              {student.carrera}
-            </span>
           </div>
         </div>
       </CardContent>

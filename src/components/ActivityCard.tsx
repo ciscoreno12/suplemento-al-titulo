@@ -4,25 +4,19 @@ import type { Activity } from "@/lib/types"
 import { ClipboardCheck } from "lucide-react"
 
 export function ActivityCard({ activity }: { activity: Activity }) {
+  const { titulo, descripcion, fecha, categoria } = activity;
 
-  const generarTextoFormal = (act: Activity) => {
-    const { titulo, descripcion, fecha } = act;
-    
-    // "descripcion" contiene la Resolución según nuestro script
-    return `El egresado se desempeñó en la actividad "${titulo}" durante el período ${fecha}. Según lo establecido en: ${descripcion}.`;
-  };
+  const inicio = categoria === "docente" 
+    ? `Se desempeñó como ${titulo}`
+    : `Se desempeñó como "${titulo}"`;
+
+  const textoFormal = `${inicio} durante el período del ${fecha}. Según lo establecido en ${descripcion}.`;
 
   return (
-    <div className="py-4 border-b border-gray-200 last:border-0 hover:bg-slate-50 transition-colors px-2">
-      <div className="flex gap-4 items-start">
-        <div className="mt-1 bg-primary/10 p-2 rounded-full">
-          <ClipboardCheck className="h-4 w-4 text-primary" />
-        </div>
-        <p className="text-gray-800 leading-relaxed text-sm md:text-base font-serif">
-          {generarTextoFormal(activity)}
-        </p>
-      </div>
+    <div className="w-full max-w-4xl mx-auto py-4">
+      <p className="text-slate-900 leading-normal text-sm md:text-base font-serif italic text-justify">
+        {textoFormal}
+      </p>
     </div>
-  
-  )
+  );
 }

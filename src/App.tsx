@@ -5,7 +5,7 @@ import { StudentInfo } from "./components/StudentInfo"
 import { EmptyState } from "./components/EmptyState"
 import { NotFoundState } from "./components/NotFoundState"
 import type { Student } from "./lib/types"
-import ActivitiesList from "./components/ActivitiesList"
+import { ActivitiesList } from "./components/ActivitiesList"
 
 type SearchState = "idle" | "loading" | "found" | "not-found"
 
@@ -22,19 +22,17 @@ function App() {
   setSearchState("loading");
   setSearchedDni(dniLimpio);
 
-  // Asegúrate de usar la URL de la NUEVA versión generada en el Paso 1
   const scriptUrl = `https://script.google.com/macros/s/AKfycbzgD7GCrBBXOIqFSKhdyo076oxAUzXNky-PK7uH7Etj2Usiz19qbiJkGLFC4kIFd4CEuw/exec`;
 
   try {
     const response = await fetch(`${scriptUrl}?dni=${dniLimpio}`, {
       method: "GET",
-      // No agregues 'headers' ni 'mode: no-cors'
+      // No agregar 'headers' ni 'mode: no-cors'
     });
 
     if (!response.ok) throw new Error("Error en la respuesta de Google");
 
     const data = await response.json();
-    console.log("RESPUESTA COMPLETA DE GOOGLE:", data); // <--- MIRA ESTO EN LA CONSOLA
     if (data && data.nombre) {
       setStudent(data);
       setSearchState("found");
@@ -74,13 +72,15 @@ function App() {
           {/* 3. No encontrado */}
           {searchState === "not-found" && <NotFoundState dni={searchedDni} />}
 
-          {/* 4. Éxito: Solo se muestra si student existe y tiene datos */}
           {searchState === "found" && student && (
-            <div className="mx-auto max-w-4xl px-4 flex flex-col gap-6 animate-in fade-in duration-500">
-  {/* Ambos componentes ahora comparten el mismo ancho máximo centrado */}
-  <StudentInfo student={student} />
-  <ActivitiesList activities={student.actividades} />
-</div>
+            <div className="flex flex-col gap-8 w-full max-w-4xl mx-auto px-4 pb-20">
+              <StudentInfo student={student} />
+              
+              <div className="space-y-2">
+                
+                <ActivitiesList activities={student.actividades} />
+              </div>
+            </div>
           )}
         </div>
       </main>
