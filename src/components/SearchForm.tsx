@@ -18,7 +18,7 @@ export function SearchForm({ dni, onDniChange, onSearch, isLoading }: SearchForm
 
   return (
     <section className="mx-auto max-w-5xl px-4 pt-10 pb-6 md:px-6 md:pt-16 md:pb-8">
-      <div className="mb-8 text-center md:mb-10">
+      <div className="mb-6 text-center md:mb-10">
         <h2 className="text-2xl font-bold uppercase tracking-tight text-foreground text-balance">
           Suplemento al Título
         </h2>
