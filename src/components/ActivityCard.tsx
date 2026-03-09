@@ -12,7 +12,8 @@ export function ActivityCard({ activity }: { activity: any }) {
         return `Cursó y aprobó con calificación ${nota} el Seminario de Educación Sexual Integral en el período ${periodo}.`;
 
       case "centro_tecnologico":
-        return `Cursó ${materiaQueConcurso} en el Centro Tecnológico de Formación para el Trabajo y la Producción durante ${periodo}.`;
+        const periodoTexto = periodo.charAt(0).toUpperCase() + periodo.slice(1).toLowerCase();
+        return `Cursó ${materiaQueConcurso} en el Centro Tecnológico de Formación para el Trabajo y la Producción, correspondiente al ${periodoTexto}.`;
 
       default:
         const ref = resolucion ? `. Según lo establecido en ${resolucion}` : "";

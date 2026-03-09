@@ -7,6 +7,7 @@ import { NotFoundState } from "./components/NotFoundState"
 import type { Student } from "./lib/types"
 import { ActivitiesList } from "./components/ActivitiesList"
 
+
 type SearchState = "idle" | "loading" | "found" | "not-found"
 
 function App() {
