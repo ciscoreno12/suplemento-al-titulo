@@ -9,7 +9,7 @@ interface ActivitiesListProps {
 export function ActivitiesList({ activities }: ActivitiesListProps) {
   const academicas = activities.filter(a => a.categoria === "academica");
   const docentes = activities.filter(a => a.categoria === "docente");
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScGs7opCGw9T7_BorqwFI5OUraXgK0MG2LkHFbK5ARHS1fDSA/viewform";
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdE-5ZkZKYuWdvsCPngt86uWugXPmM_cBCAE7pgnktXKBgLGw/viewform";
 
   return (
     <div className="w-full space-y-12">

@@ -5,7 +5,7 @@ interface NotFoundStateProps {
 }
 
 export function NotFoundState({ dni }: NotFoundStateProps) {
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScGs7opCGw9T7_BorqwFI5OUraXgK0MG2LkHFbK5ARHS1fDSA/viewform";
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdE-5ZkZKYuWdvsCPngt86uWugXPmM_cBCAE7pgnktXKBgLGw/viewform";
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-center py-10 px-4 text-center animate-in fade-in slide-in-from-top-2 duration-500">
