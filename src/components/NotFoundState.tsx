@@ -45,7 +45,7 @@ export function NotFoundState({ dni }: NotFoundStateProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-black uppercase hover:underline decoration-2 underline-offset-4 transition-all text-sm md:text-base group"
             >
-              Formulario de Rectificación de Actividades
+              Formulario de Reclamo de Actividades
               <ExternalLink className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
