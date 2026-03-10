@@ -42,29 +42,29 @@ export function ActivitiesList({ activities }: ActivitiesListProps) {
       )}
 
       <footer className="mt-20 border-t-2 border-black pt-8">
-  <div className="max-w-4xl mx-auto text-center">
-    <p className="text-sm md:text-lg text-foreground font-medium leading-relaxed">
-      <span className="font-black uppercase tracking-tighter text-lg md:text-xl block mb-2">
-        Importante:
-      </span>
-      Ante cualquier omisión o discrepancia en las actividades académicas, 
-      el/la estudiante deberá informar a la institución a través del siguiente enlace:
-    </p>
-    
-    {/* Contenedor extra para asegurar el centrado del link */}
-    <div className="mt-4 flex justify-center">
-      <a
-        href={GOOGLE_FORM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 font-black uppercase hover:underline decoration-2 underline-offset-4 transition-color text-sm md:text-base"
-      >
-        Formulario de Reclamo de Actividades
-        <ExternalLink className="h-5 w-5" />
-      </a>
-    </div>
-  </div>
-</footer>
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm md:text-lg text-foreground font-medium leading-relaxed">
+            <span className="font-black uppercase tracking-tighter text-lg md:text-xl block mb-2">
+              Importante:
+            </span>
+            Ante cualquier omisión o discrepancia en las actividades académicas, 
+            el/la estudiante deberá informar a la institución a través del siguiente enlace:
+          </p>
+          
+          {/* Contenedor extra para asegurar el centrado del link */}
+          <div className="mt-4 flex justify-center">
+            <a
+              href={GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-black uppercase hover:underline decoration-2 underline-offset-4 transition-color text-sm md:text-base"
+            >
+              Formulario de Reclamo de Actividades
+              <ExternalLink className="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

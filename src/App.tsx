@@ -85,8 +85,18 @@ function App() {
         </div>
       </main>
 
-      <footer className="py-6 text-center text-sm text-muted-foreground border-t">
-        UNAHUR — Suplemento al Título
+      <footer className="py-8 border-t text-center flex flex-col items-center gap-3">
+        {/* LOGO PNG */}
+        <img 
+          src="/logo.png" 
+          alt="Logo UNAHUR" 
+          className="h-10 w-auto" 
+        />
+        
+        {/* TU TEXTO ORIGINAL */}
+        <p className="text-sm text-muted-foreground uppercase tracking-wide">
+          UNAHUR | Suplemento al Título
+        </p>
       </footer>
     </div>
   )
