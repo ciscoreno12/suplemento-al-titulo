@@ -88,7 +88,7 @@ function App() {
       <footer className="py-8 border-t text-center flex flex-col items-center gap-3">
         {/* LOGO PNG */}
         <img 
-          src="/logo.png" 
+          src="/logo-unahur.png" 
           alt="Logo UNAHUR" 
           className="h-10 w-auto" 
         />
