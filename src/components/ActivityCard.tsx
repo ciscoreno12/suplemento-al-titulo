@@ -1,12 +1,19 @@
-import type { Activity } from "@/lib/types"
-
 export function ActivityCard({ activity }: { activity: any }) {
   const { titulo, resolucion, periodo, materiaQueConcurso, nota, tipo } = activity;
 
   const generarTexto = () => {
     switch (tipo) {
       case "asistente":
-        return `Se desempeñó como Estudiante Asistente durante el período del ${periodo}. Según lo establecido en ${resolucion}, en el área de ${materiaQueConcurso}.`;
+        const m = materiaQueConcurso.toLowerCase().trim();
+
+        const esCampoEspecial = 
+          m.includes("formacion basica") || m.includes("formación básica") ||
+          m.includes("formacion especifica") || m.includes("formación específica") ||
+          m.includes("formacion comun") || m.includes("formación común") || m.includes("formacion") || m.includes("formación");
+
+        const conector = esCampoEspecial ? "en" : "en el área de";
+
+        return `Se desempeñó como Estudiante Asistente durante el período del ${periodo}. Según lo establecido en ${resolucion}, ${conector} ${materiaQueConcurso}.`;
 
       case "esi":
         return `Cursó y aprobó con calificación ${nota} el Seminario de Educación Sexual Integral en el período ${periodo}.`;
