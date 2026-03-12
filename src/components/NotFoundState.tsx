@@ -31,8 +31,8 @@ export function NotFoundState({ dni }: NotFoundStateProps) {
       {/* 2. SECCIÓN DE ACCIÓN: La nota importante y el enlace */}
       <div className="w-full pt-10 border-t border-border">
         <div className="max-w-xl mx-auto">
-          <p className="text-sm md:text-base text-foreground font-medium leading-relaxed italic mb-6">
-            <span className="font-black uppercase tracking-tighter text-lg block mb-2 not-italic">
+          <p className="text-sm md:text-base text-foreground font-medium leading-relaxed mb-6">
+            <span className="font-black uppercase tracking-tighter text-lg block mb-2">
               Importante:
             </span>
             Si considerás que existe una omisión en el registro oficial del Suplemento al Título, por favor informá la situación mediante el siguiente enlace:
